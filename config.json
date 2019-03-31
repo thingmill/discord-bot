@@ -1,6 +1,16 @@
 {
   "applications": [
     {
+      "name": "thingmill/discord-bot",
+      "path": "./",
+      "scripts": {
+        "deploy": [
+          "git pull origin master",
+          "pm2 restart thingmill.discord-bot"
+        ]
+      }
+    },
+    {
       "name": "thingmill/web",
       "path": "~/faustino/enrique-burnum",
       "scripts": {
