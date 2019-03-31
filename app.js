@@ -19,23 +19,29 @@ client.on('message', msg => {
         msg.reply('Pong!')
         break;
       case 'deploy':
-        let applications = config.applications.filter(app => app.name === commandArgs[1])
-        if (applications.length === 0) {
-          msg.reply(`I can't find any application with the name "${commandArgs[1]}"`)
+        // user need to be admin
+        let canDeploy = msg.member.roles.array().filter(role => role.name === 'can-deploy').length !== 0
+        if (!canDeploy) {
+          msg.reply("Oh sorry you can't deploy because you are not very wealthy unlike the others...")
         } else {
-          msg.reply('Ok, I will deploy that for you...')
-          let application = applications[0]
-          application.scripts.deploy.unshift('cd ' + application.path)
-          let commandToExec = application.scripts.deploy.join(' && ')
-          var exec = require('node-exec-promise').exec;
-
-          exec(commandToExec).then(function(out) {
-            console.log(out)
-            msg.reply("It's deploy!")
-          }, function(err) {
-            console.error(err);
-          });
+          let applications = config.applications.filter(app => app.name === commandArgs[1])
+          if (applications.length === 0) {
+            msg.reply(`I can't find any application with the name "${commandArgs[1]}"`)
+          } else {
+            msg.reply('Ok, I will deploy that for you...')
+            let application = applications[0]
+            application.scripts.deploy.unshift('cd ' + application.path)
+            let commandToExec = application.scripts.deploy.join(' && ')
+            let exec = require('node-exec-promise').exec;
+            exec(commandToExec).then(function(out) {
+              console.log(out)
+              msg.reply("It's deploy!")
+            }, function(err) {
+              console.error(err);
+            });
+          }
         }
+        break;
     }
   }
 });
