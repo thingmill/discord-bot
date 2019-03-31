@@ -17,6 +17,7 @@ client.on('message', msg => {
     switch (commandArgs[0]) {
       case 'ping':
         msg.reply('Pong!')
+        break;
       case 'deploy':
         let applications = config.applications.filter(app => app.name === commandArgs[1])
         if (applications.length === 0) {
