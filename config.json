@@ -45,7 +45,7 @@
       "path": "~/faustino/dewitt-bellish",
       "scripts": {
         "deploy": [
-          "git pull origin master",
+          "git pull origin nuxt",
           "npm install",
           "npm run build",
           "pm2 restart retrobox.web"
