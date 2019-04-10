@@ -14,13 +14,51 @@ client.on('message', msg => {
     // msg.channel.startTyping()
     let commandRow = msg.content.substr(2, msg.length)
     let commandArgs = commandRow.split(' ')
+    let canDeploy = msg.member.roles.array().filter(role => role.name === 'can-deploy').length !== 0
+    
     switch (commandArgs[0]) {
       case 'ping':
         msg.reply('Pong!')
         break;
+      case 'list':
+        if (!canDeploy) {
+          msg.reply("Nop, you can't see that")
+        } else {
+          let lines = config.applications.map(item => {
+            return item.name
+          })
+          lines = lines.join('\n')
+          msg.channel.send('```' + lines + '```')
+        }
+        break;
+      case 'view':
+        if (!canDeploy) {
+          msg.reply("Nop, you can't see that")
+        } else {
+          let applications = config.applications.filter(app => app.name === commandArgs[1])
+          if (applications.length === 0) {
+            msg.reply(`I can't find any application with the name "${commandArgs[1]}"`)
+          } else {
+            let application = applications[0]
+            let embed = new Discord.RichEmbed({
+              title: application.name,
+              fields: [
+                {
+                  name: "Path",
+                  value: application.path
+                },
+                { 
+                  name: "Commandes",
+                  value: application.scripts.deploy.join(' && ')                  
+                }
+              ]
+            });
+            msg.channel.send(embed)
+          }
+        }
+        break;
       case 'deploy':
         // user need to be admin
-        let canDeploy = msg.member.roles.array().filter(role => role.name === 'can-deploy').length !== 0
         if (!canDeploy) {
           msg.reply("Oh sorry you can't deploy because you are not very wealthy unlike the others...")
         } else {
