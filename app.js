@@ -72,7 +72,7 @@ client.on('message', msg => {
             let commandToExec = application.scripts.deploy.join(' && ')
             let exec = require('node-exec-promise').exec;
             exec(commandToExec).then(function(out) {
-              msg.reply(`\`\`\` ${out} \`\`\``)
+              msg.reply(`\`\`\` ${out.stdout} \`\`\``)
               msg.reply("It's deploy!")
             }, function(err) {
               console.error(err);
