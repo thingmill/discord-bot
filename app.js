@@ -73,6 +73,9 @@ client.on('message', msg => {
             let exec = require('node-exec-promise').exec;
             exec(commandToExec).then(function(out) {
               msg.reply(`\`\`\` ${out.stdout} \`\`\``)
+              if (out.stderr != "" && out.stderr != " ") {
+                msg.reply(`\`\`\` ${out.stderr} \`\`\``)
+              }
               msg.reply("It's deploy!")
             }, function(err) {
               console.error(err);
