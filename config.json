@@ -6,7 +6,7 @@
       "scripts": {
         "deploy": [
           "git pull origin master",
-          "pm2 restart thingmill.discord-bot"
+          "pm2 restart thingmill.discord"
         ]
       }
     },
