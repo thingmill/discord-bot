@@ -61,6 +61,17 @@
           "npm run build"
         ]
       }
+    },
+    {
+      "name": "retrobox/ws",
+      "path": "~/faustino/odell-compiseno",
+      "scripts": {
+        "deploy": [
+          "git pull origin master",
+          "npm install",
+          "pm2 restart retrobox.ws"
+        ]
+      }
     }
   ]
 }
