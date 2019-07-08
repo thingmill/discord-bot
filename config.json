@@ -15,7 +15,8 @@
       "path": "~/faustino/enrique-burnum",
       "scripts": {
         "deploy": [
-          "echo \"qdssdqqqsd\""
+          "git pull origin master",
+          "pm2 restart thingmill.web"
         ]
       }
     },
