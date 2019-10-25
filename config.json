@@ -72,6 +72,17 @@
           "pm2 restart retrobox.ws"
         ]
       }
+    },
+    {
+      "name": "retrobox/worker",
+      "path": "~/faustino/milan-kindell",
+      "scripts": {
+        "deploy": [
+          "git pull origin master",
+          "composer install",
+          "pm2 restart retrobox.worker"
+        ]
+      }
     }
   ]
 }
