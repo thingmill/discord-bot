@@ -35,6 +35,7 @@
       "scripts": {
         "deploy": [
           "git pull origin master",
+          "rm composer.lock",
           "composer install",
           "vendor/bin/phinx migrate"
         ]
