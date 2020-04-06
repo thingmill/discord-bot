@@ -9,6 +9,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
+  client.user.setActivity("!!deploy", {"type": "PLAYING"});
   if (msg.content.substr(0, 2) === '!!') {
     // process as a command
     // msg.channel.startTyping()
