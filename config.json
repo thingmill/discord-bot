@@ -2,7 +2,7 @@
   "applications": [
     {
       "name": "thingmill/discord-bot",
-      "path": "./",
+      "path": "~/faustino/maurice-cronauer/",
       "scripts": {
         "deploy": [
           "git pull origin master",
