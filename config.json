@@ -36,7 +36,7 @@
         "deploy": [
           "git pull origin master",
           "rm composer.lock",
-          "composer install",
+          "php-7.4 /opt/php7.4/bin/composer.phar install",
           "vendor/bin/phinx migrate"
         ]
       }
