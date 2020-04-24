@@ -36,8 +36,8 @@
         "deploy": [
           "git pull origin master",
           "rm -f composer.lock",
-          "php-7.4 /opt/php7.4/bin/composer.phar install",
-          "vendor/bin/phinx migrate"
+          "composer_php7.4 install",
+          "php-7.4 vendor/bin/phinx migrate"
         ]
       }
     },
@@ -82,7 +82,7 @@
         "deploy": [
           "git pull origin master",
           "rm -f composer.lock",
-          "php-7.4 /opt/php7.4/bin/composer.phar install",
+          "composer_php7.4 install",
           "pm2 restart retrobox.worker"
         ]
       }
