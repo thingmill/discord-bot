@@ -80,6 +80,7 @@ client.on('message', msg => {
               msg.reply("It's deploy!")
             }, function(err) {
               console.error(err);
+              msg.reply(`\`\`\` ${err} \`\`\``)
             });
           }
         }
