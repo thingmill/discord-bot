@@ -37,7 +37,8 @@
           "git pull origin master",
           "rm -f composer.lock",
           "composer_php7.4 install",
-          "php-7.4 vendor/bin/phinx migrate"
+          "php-7.4 vendor/bin/phinx migrate",
+          "env APP_TEST=1 php-7.4 vendor/bin/phinx migrate"
         ]
       }
     },
