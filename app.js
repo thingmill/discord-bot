@@ -6,16 +6,21 @@ const config = require('./config.json')
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity("!!deploy", {"type": "PLAYING"});
 });
 
 client.on('message', msg => {
-  client.user.setActivity("!!deploy", {"type": "PLAYING"});
+  if (msg.author.id === client.user.id) return
   if (msg.content.substr(0, 2) === '!!') {
     // process as a command
     // msg.channel.startTyping()
     let commandRow = msg.content.substr(2, msg.length)
     let commandArgs = commandRow.split(' ')
-    let canDeploy = msg.member.roles.array().filter(role => role.name === 'can-deploy').length !== 0
+    let canDeploy = false
+    if (!msg.author.bot) 
+        canDeploy = msg.member.roles.array().filter(role => role.name === 'can-deploy').length !== 0
+    else 
+        canDeploy = true
     
     switch (commandArgs[0]) {
       case 'ping':
