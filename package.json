@@ -2,8 +2,8 @@
     "name": "@thingmill/deploy-discord-bot",
     "license": "MIT",
     "dependencies": {
-        "discord.js": "^11.4.2",
-        "dotenv": "^7.0.0",
+        "discord.js": "^12.2.0",
+        "dotenv": "^8.2.0",
         "node-exec-promise": "^1.0.2"
     },
     "scripts": {
