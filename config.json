@@ -34,8 +34,8 @@
       "path": "~/faustino/song-rostad",
       "scripts": {
         "deploy": [
-          "git pull origin master",
           "rm -f composer.lock",
+          "git pull origin master",
           "composer_php7.4 install",
           "php-7.4 vendor/bin/phinx migrate",
           "env APP_TEST=1 php-7.4 vendor/bin/phinx migrate"
@@ -81,8 +81,8 @@
       "path": "~/faustino/milan-kindell",
       "scripts": {
         "deploy": [
-          "git pull origin master",
           "rm -f composer.lock",
+          "git pull origin master",
           "composer_php7.4 install",
           "pm2 restart retrobox.worker"
         ]
