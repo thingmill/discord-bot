@@ -1,58 +1,93 @@
 {
     "applications": [
-        {
-            "name": "thingmill/web",
-            "path": "~/faustino/enrique-burnum",
-            "scripts": {
-                "deploy": [
-                    "git pull origin master",
-                    "npm i",
-                    "pm2 restart thingmill.web"
-                ]
-            }
-        },
-        {
-            "name": "retrobox/docs",
-            "path": "~/faustino/amber-valido",
-            "scripts": {
-                "deploy": [
-                    "git pull origin master"
-                ]
-            }
-        },
-        {
-            "name": "retrobox/api",
-            "path": "~/faustino/song-rostad",
-            "scripts": {
-                "deploy": [
-                    "git pull origin master",
-                    "composer install",
-                    "vendor/bin/phinx migrate"
-                ]
-            }
-        },
-        {
-            "name": "retrobox/web",
-            "path": "~/faustino/dewitt-bellish",
-            "scripts": {
-                "deploy": [
-                    "git pull origin master",
-                    "npm install",
-                    "npm run build",
-                    "pm2 restart retrobox.web"
-                ]
-            }
-        },
-        {
-            "name": "retrobox/admin",
-            "path": "~/faustino/klara-musch",
-            "scripts": {
-                "deploy": [
-                    "git pull origin master",
-                    "npm install",
-                    "npm run build"
-                ]
-            }
+      {
+        "name": "thingmill/discord-bot",
+        "path": "~/faustino/maurice-cronauer/",
+        "scripts": {
+          "deploy": [
+            "git pull origin master",
+            "pm2 restart thingmill.bot"
+          ]
         }
+      },
+      {
+        "name": "thingmill/web",
+        "path": "~/faustino/enrique-burnum",
+        "scripts": {
+          "deploy": [
+            "git pull origin master",
+            "pm2 restart thingmill.web"
+          ]
+        }
+      },
+      {
+        "name": "retrobox/docs",
+        "path": "~/faustino/amber-valido",
+        "scripts": {
+          "deploy": [
+            "git pull origin master"
+          ]
+        }
+      },
+      {
+        "name": "retrobox/api",
+        "path": "~/faustino/song-rostad",
+        "scripts": {
+          "deploy": [
+            "rm -f composer.lock",
+            "git pull origin master",
+            "composer_php7.4 install",
+            "php-7.4 vendor/bin/phinx migrate",
+            "env APP_TEST=1 php-7.4 vendor/bin/phinx migrate"
+          ]
+        }
+      },
+      {
+        "name": "retrobox/web",
+        "path": "~/faustino/dewitt-bellish",
+        "scripts": {
+          "deploy": [
+            "git pull origin master",
+            "yarn",
+            "yarn run build",
+            "pm2 restart retrobox.web"
+          ]
+        }
+      },
+      {
+        "name": "retrobox/admin",
+        "path": "~/faustino/klara-musch",
+        "scripts": {
+          "deploy": [
+            "git pull origin master",
+            "yarn install",
+            "yarn run build"
+          ]
+        }
+      },
+      {
+        "name": "retrobox/ws",
+        "path": "~/faustino/odell-compiseno",
+        "scripts": {
+          "deploy": [
+            "git pull origin master",
+            "yarn install",
+            "pm2 restart retrobox.ws"
+          ]
+        }
+      },
+      {
+        "name": "retrobox/worker",
+        "path": "~/faustino/milan-kindell",
+        "scripts": {
+          "deploy": [
+            "rm -f composer.lock",
+            "git pull origin master",
+            "composer_php7.4 install",
+            "pm2 restart retrobox.worker"
+          ]
+        }
+      }
     ]
-}
+  }
+  
